@@ -31,8 +31,14 @@ class Album
 
   def self.all()
     sql = "SELECT * FROM albums"
-    results = SqlRunner (sql)
-    return results.map {|result| Album.new(result)}
+    results = SqlRunner.run (sql)
+    return results.map { |result| Album.new( result ) }
+  end
+#   def self.all()
+#   sql = "SELECT * FROM zombies"
+#   results = SqlRunner.run( sql )
+#   return results.map { |hash| Zombie.new( hash ) }
+# end
 
   def self.delete_all()
     sql = "DELETE FROM albums"
