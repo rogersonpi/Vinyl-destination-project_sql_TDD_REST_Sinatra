@@ -1,10 +1,11 @@
-require_relative ( "../bd/SqlRunner" )
+require_relative ( "../db/sql_runner.rb" )
 
 class Album
 
-  attr_reader()
+  attr_reader( :id, :title, :genre, :quantity, :price, :cost)
 
   def initialize (options)
+    @id = options['id'].to_i if options['id']
     @title = options["title"]
     @genre = options["genre"]
     @quantity = options["quantity"].to_i
@@ -13,7 +14,7 @@ class Album
 
   end
 
-
+# Instance methods
   def save()
 
     sql = "INSERT INTO albums
@@ -22,7 +23,21 @@ class Album
     ($1, $2, $3, $4, $5)
     RETURNING id"
     values = [@title, @genre, @quantity, @price, @cost]
-    results = SqlRunner.run (sql, values)
-end
+    results = SqlRunner.run(sql, values)
+    @id = results.first()['id'].to_i
+  end
+
+# class methods
+
+  def self.all()
+    sql = "SELECT * FROM albums"
+    results = SqlRunner (sql)
+    return results.map {|result| Album.new(result)}
+
+  def self.delete_all()
+    sql = "DELETE FROM albums"
+    SqlRunner.run( sql )
+  end
+
 
 end

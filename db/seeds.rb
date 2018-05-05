@@ -3,7 +3,8 @@ require_relative( "../models/artist.rb" )
 
 require("pry-byebug")
 
-Album.delete_all()
+#Album.delete_all()
+#Artist.delete_all()
 
 album1 = Album.new ({
   "title" => "Sleeping through the war",
