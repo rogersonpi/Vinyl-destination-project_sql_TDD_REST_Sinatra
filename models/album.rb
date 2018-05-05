@@ -12,8 +12,17 @@ class Album
     @cost = options["cost"].to_i
 
   end
-end
+
 
   def save()
 
-    sql = "INSERT INTO albums (title, genre, quantity, price,)"
+    sql = "INSERT INTO albums
+    (title, genre, quantity, price, cost)
+    values
+    ($1, $2, $3, $4, $5)
+    RETURNING id"
+    values = [@title, @genre, @quantity, @price, @cost]
+    results = SqlRunner.run (sql, values)
+end
+
+end
