@@ -1,8 +1,8 @@
-require ('pg')
+require( 'pg' )
 
 class SqlRunner
 
-  def self.run ( sql, values [])
+  def self.run( sql, values = [] )
     begin
       db = PG.connect({ dbname: 'records', host: 'localhost' })
       db.prepare("query", sql)
@@ -12,5 +12,4 @@ class SqlRunner
     end
     return result
   end
-
 end
