@@ -29,12 +29,12 @@ class Album
 
 # class methods
 
-  def self.find_albums()
-    sql =  "SELECT artists.*, albums.* FROM artists LEFT JOIN albums
-    ON artists.album_id = albums.id"
-    results = SqlRunner.run(sql)
-    return results.map { |result| Album.new(result) }
-  end
+  # def self.find_albums()
+  #   sql =  "SELECT artists.*, albums.* FROM artists LEFT JOIN albums
+  #   ON artists.album_id = albums.id"
+  #   results = SqlRunner.run(sql)
+  #   return results.map { |result| Album.new(result) }
+  # end
 
   def self.all()
     sql = "SELECT * FROM albums"

@@ -3,6 +3,6 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/album.rb' )
 
 get '/albums/inventory' do
-  @albums = Album.find_albums()
+  @albums = Album.all()
   erb(:"albums/index")
 end
