@@ -1,14 +1,7 @@
-<h1>Albums</h1>
-
-<% @albums.each do |album| %>
+<p>Album</p>
 
 <p>Title: <%=album.title%></P>
 <p>Genre: <%=album.genre%></P>
 <p>Cost: <%=album.cost%></P>
 <p>Price: <%=album.price%></P>
 <p>Quantity: <%=album.quantity%></P>
-
-<p> <a href = "/album/<%album.id%>">Show Album<a/> </p>
-
-
-<%end%>
