@@ -5,3 +5,7 @@
 <p>Cost: <%=@album.cost%></p>
 <p>Price: <%=@album.price%></p>
 <p>Quantity: <%=@album.quantity%></p>
+
+<form action = "/albums/<%=@album.id%>/delete" method="POST">
+<button type="submit">Delete</button>
+</form>
