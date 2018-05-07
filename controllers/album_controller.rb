@@ -8,6 +8,6 @@ get '/albums' do
 end
 
 get '/albums/:id' do
-  @artist = Album.find_artist(params[:id])
+  @album = Album.find_album(params[:id])
   erb(:"albums/show")
 end

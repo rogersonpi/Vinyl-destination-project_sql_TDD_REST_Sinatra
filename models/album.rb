@@ -27,15 +27,22 @@ class Album
     @id = results.first()['id'].to_i
   end
 
-  def find_artist()
-    sql =  "SELECT artists.*, albums.* FROM artists LEFT JOIN albums
-    ON artists.album_id = albums.id WHERE artists.album_id = $1"
-    values = [@id]
-    results = SqlRunner.run(sql, values)
-    return results.map {|result| Artist.new (result)}
-  end
+  # def find_artist()
+  #   sql =  "SELECT artists.*, albums.* FROM artists LEFT JOIN albums
+  #   ON artists.album_id = albums.id WHERE artists.album_id = $1"
+  #   values = [@id]
+  #   results = SqlRunner.run(sql, values)
+  #   return results.map {|result| Artist.new (result)}
+  # end
 
 # class methods
+
+  def self.find_album(id)
+    sql = "SElECT * FROM albums WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values).first()
+    return Album.new(result)
+  end
 
 
   def self.all()
