@@ -16,15 +16,12 @@ end
 post '/albums' do #create
  @newalbum = Album.new(params)
  @newalbum.save()
+ redirect to ("/albums")
 end
 
-post '/pizza-orders' do # create
-  @album = PizzaOrder.new( params )
-  @album.save()
-  erb( :create )
-end
-
-get '/albums/:id/edit' do # edit
+get '/albums/:id/edit' do
+  # edit
+  @artists = Artist.all()
   @album = Album.find_album( params[:id] )
   erb( :"albums/edit" )
 end
@@ -34,7 +31,7 @@ get '/albums/:id' do #show
   erb(:"albums/show")
 end
 
-post '/albums/' do
+post '/albums/:id/edit' do
   Album.new(params).update
   redirect to ("/albums")
 end

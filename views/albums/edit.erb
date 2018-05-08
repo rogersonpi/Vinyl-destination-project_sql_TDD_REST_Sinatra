@@ -1,10 +1,10 @@
-<form method="post" action = "/albums/:id">
+<form method="post" action = "/albums/<%=@album.id%>/edit">
 
   <label for="title">title:</label>
   <input
   type="text"
-  name="last_name"
-  id="last-name-field"
+  name="title"
+  id="title-field"
   />
 
   <label for="genre">Genre:</label>
@@ -13,25 +13,33 @@
   name="genre"
   id="genre-field"
   />
-  <label for="price">Price:</label>
-  <input
-  type="text"
-  name="genre"
-  id="genre-field"
-  />
-  <label for="cost">Cost:</label>
-  <input
-  type="text"
-  name="genre"
-  id="genre-field"
-  />
-
   <label for="quantity-field">Quantity:</label>
   <input
   type="number"
   name="quantity"
   id="quantity-field"
   />
+  <label for="price">Price:</label>
+  <input
+  type="text"
+  name="price"
+  id="price-field"
+  />
+  <label for="cost">Cost:</label>
+  <input
+  type="text"
+  name="cost"
+  id="cost-field"
+  />
+
+  <label>
+    Select an artist:
+    <select name="artist_id">
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>"><%= artist.name %></option>
+      <% end %>
+    </select>
+  </label>
   <button type="submit">Update</button>
 
 </form>

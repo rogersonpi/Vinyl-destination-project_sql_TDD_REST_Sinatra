@@ -2,7 +2,8 @@ require_relative ( "../db/sql_runner.rb" )
 
 class Album
 
-  attr_reader( :id, :title, :genre, :quantity, :price, :cost, :artist_id)
+  attr_reader(:id)
+  attr_accessor(:title, :genre, :quantity, :price, :cost, :artist_id)
 
   def initialize (options)
     @id = options['id'].to_i if options['id']
@@ -44,7 +45,7 @@ class Album
      $1, $2, $3, $4, $5
      )
      WHERE id = $6"
-     values = [@id, @title, @genre, @quantity, @price, @cost]
+     values = [ @title, @genre, @quantity, @price, @cost, @id]
      SqlRunner.run( sql, values )
      end
 
