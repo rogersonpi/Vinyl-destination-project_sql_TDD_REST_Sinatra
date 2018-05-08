@@ -23,10 +23,10 @@ class Artist
   end
 
   def self.find_artist(id)
-    sql = "SElECT FROM artists WHERE id = $1"
+    sql = "SElECT * FROM artists WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql, values).first()
-    return Album.new(result)
+    return Artist.new(result)
   end
 
   def self.delete_artist(id)

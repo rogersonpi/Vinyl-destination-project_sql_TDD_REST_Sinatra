@@ -2,15 +2,17 @@
 
   <p> <a href = "/albums/new">Add Album<a/> </p>
 
+
   <% @albums.each do |album| %>
 
   <p>Title: <%=album.title%></P>
   <p>Genre: <%=album.genre%></P>
   <p>Cost: <%=album.cost%></P>
   <p>Price: <%=album.price%></P>
-  <p>Quantity: <%=album.quantity%></P>
-
+  <p>Quantity: <%=album.quantity%></p>
+  <%@markup1 = album.price - album.cost %>
+  <p>Markup: <%=@markup1%></p>
   <p> <a href = "/albums/<%= album.id%>">Show Album<a/> </p>
-  <p> <a href = "/artists/<%= album.id%>">Show artist<a/></p>
+  <p> <a href = "/artists/<%= album.artist_id%>">Show artist<a/></p>
 
   <%end%>

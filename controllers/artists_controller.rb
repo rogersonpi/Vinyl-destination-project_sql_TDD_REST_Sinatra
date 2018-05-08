@@ -1,5 +1,6 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+#require("pry")
 require_relative( '../models/album.rb' )
 require_relative('../models/artist.rb')
 
@@ -13,10 +14,11 @@ get '/artists/:id' do #show
   erb(:"artists/show")
 end
 
-# get '/artists/new' do #new
-#   @artists = Artist.all()
-#   erb( :"artists/new" )
-# end
+
+get '/artists/new' do #new
+  @artists = Artist.all()
+  erb( :"artists/new" )
+end
 #
 # post '/artists' do #create
 #  @newalbum = Album.new(params)
