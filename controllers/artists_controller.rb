@@ -14,7 +14,6 @@ get '/artists/:id' do #show
   erb(:"artists/show")
 end
 
-
 get '/artists/new' do #new
   @artists = Artist.all()
   erb( :"artists/new" )
