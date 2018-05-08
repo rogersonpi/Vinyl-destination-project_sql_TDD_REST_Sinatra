@@ -38,14 +38,13 @@ class Album
        genre,
        quantity,
        price,
-       cost,
-       artist_id
+       cost
      ) =
      (
-     $1, $2, $3, $4, $5, $6
+     $1, $2, $3, $4, $5
      )
-     WHERE id = $7"
-     values = [@title, @genre, @quantity, @price, @cost, @artist_id]
+     WHERE id = $6"
+     values = [@id, @title, @genre, @quantity, @price, @cost]
      SqlRunner.run( sql, values )
      end
 

@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/album.rb' )
+require_relative('../models/artist.rb')
 
 get '/albums' do #index
   @albums = Album.all()
@@ -8,17 +9,23 @@ get '/albums' do #index
 end
 
 get '/albums/new' do #new
+  @artists = Artist.all()
   erb( :"albums/new" )
 end
 
 post '/albums' do #create
  @newalbum = Album.new(params)
  @newalbum.save()
- erb( :"albums/create")
+end
+
+post '/pizza-orders' do # create
+  @album = PizzaOrder.new( params )
+  @album.save()
+  erb( :create )
 end
 
 get '/albums/:id/edit' do # edit
-  @ablum = Album.find_album( params[:id] )
+  @album = Album.find_album( params[:id] )
   erb( :"albums/edit" )
 end
 
@@ -27,7 +34,7 @@ get '/albums/:id' do #show
   erb(:"albums/show")
 end
 
-post '/albums/:id' do
+post '/albums/' do
   Album.new(params).update
   redirect to ("/albums")
 end

@@ -32,6 +32,16 @@
   name="quantity"
   id="quantity-field"
   />
+
+  <label>
+    Select an artist:
+    <select name="artist_id">
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>"><%= artist.name %></option>
+      <% end %>
+    </select>
+  </label>
   <button type="submit">New Album</button>
+
 
 </form>
