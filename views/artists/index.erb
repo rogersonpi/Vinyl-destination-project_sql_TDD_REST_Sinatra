@@ -4,7 +4,12 @@
 
 <p>Artist: <%=artist.name%></P>
 
-  <p> <a href = "/artists/<%= artist.id%>">Edit artist<a/> </p>
-  <p> <a href = "/artists/<%= artist.id%>">Delete album<a/></p>
+  <p> <a href = "/artists/<%= artist.id%>/edit">Edit artist<a/> </p>
 
+
+  <form method = "post" action ="/artists/<%= artist.id%>/delete">
+
+    <button type="submit">Remove Artist</button>
+
+  </form>
 <%end%>

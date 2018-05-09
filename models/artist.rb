@@ -2,13 +2,15 @@ require_relative ( "../db/sql_runner.rb" )
 
 class Artist
 
-  attr_reader( :id, :name)
+  attr_reader(:id)
+  attr_accessor( :name )
 
   def initialize (options)
     @id = options['id'].to_i if options['id']
     @name = options["name"]
-
   end
+
+  #instance
 
   def save()
 
@@ -22,6 +24,25 @@ class Artist
     @id = results.first()['id'].to_i
   end
 
+  def update()
+  sql = "UPDATE artists
+  SET
+
+      name = $1
+    
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run( sql, values )
+  end
+
+  def get_albums()
+    sql = "SELECT * FROM albums WHERE albums.artist_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map {|result| Album.new(result)}
+
+  end
+  #class
   def self.find_artist(id)
     sql = "SElECT * FROM artists WHERE id = $1"
     values = [id]
@@ -30,7 +51,7 @@ class Artist
   end
 
   def self.delete_artist(id)
-    sql = "DELETE FROM albums WHERE id = $1"
+    sql = "DELETE FROM artists WHERE id = $1"
     values = [id]
     SqlRunner.run( sql, values )
   end
@@ -44,6 +65,5 @@ class Artist
     sql = "DELETE FROM artists"
     SqlRunner.run( sql )
   end
-
 
 end

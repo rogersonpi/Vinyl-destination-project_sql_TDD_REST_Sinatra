@@ -6,6 +6,13 @@
 <p>Price: <%=@album.price%></p>
 <p>Quantity: <%=@album.quantity%></p>
 
+<% if @album.quantity < 5 && @album.quantity > 0%>
+  <%stock = "low stock"%>
+<%elsif @album.quantity == 0%>
+  <%stock = "out of stock"%>
+<%end%>
+<p><%=stock%></p>
+
 <form action = "/albums/<%=@album.id%>/delete" method="POST">
 <button type="submit">Delete</button>
 </form>

@@ -16,5 +16,5 @@ CREATE TABLE albums
   quantity INT2,
   price INT2,
   cost INT2,
-  artist_id INT2 references artists(id)
+  artist_id INT2 references artists(id) ON DELETE CASCADE
 );

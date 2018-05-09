@@ -22,7 +22,7 @@ end
 get '/albums/:id/edit' do
   # edit
   @artists = Artist.all()
-  @album = Album.find_album( params[:id] )
+  @albums = Album.find_album( params[:id] )
   erb( :"albums/edit" )
 end
 
@@ -40,6 +40,21 @@ post '/albums/:id/delete' do
   Album.delete_album(params[:id])
   redirect to ("/albums")
 end
+
+post '/albums/:id/buy' do
+
+  album = Album.find_album(params[:id])
+  album.buy_album
+  redirect to ('/albums')
+end
+
+post '/albums/:id/sell' do
+
+  album = Album.find_album(params[:id])
+  album.sell_album
+  redirect to ('/albums')
+end
+
 
 
 

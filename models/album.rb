@@ -29,7 +29,10 @@ class Album
     @id = results.first()['id'].to_i
   end
 
+  def markup()
+    markup = @price - @Cost
 
+  end
 
    def update()
    sql = "UPDATE albums
@@ -47,8 +50,29 @@ class Album
      WHERE id = $6"
      values = [ @title, @genre, @quantity, @price, @cost, @id]
      SqlRunner.run( sql, values )
-     end
+    end
 
+  def sell_album()
+    sql = "UPDATE albums
+    SET
+      quantity = $1
+
+      WHERE id = $2"
+      @quantity += -1
+      values =[@quantity, @id]
+      SqlRunner.run(sql, values)
+    end
+
+    def buy_album()
+      sql = "UPDATE albums
+      SET
+        quantity = $1
+
+      WHERE id = $2"
+      @quantity += 1
+      values =[@quantity, @id]
+      SqlRunner.run(sql, values)
+    end
   # def find_artist()
   #   sql =  "SELECT artists.*, albums.* FROM artists LEFT JOIN albums
   #   ON artists.album_id = albums.id WHERE artists.album_id = $1"

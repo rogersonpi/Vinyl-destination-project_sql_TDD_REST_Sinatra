@@ -11,9 +11,19 @@
   <p>Cost: <%=album.cost%></P>
   <p>Price: <%=album.price%></P>
   <p>Quantity: <%=album.quantity%></p>
-  <%@markup1 = album.price - album.cost %>
-  <p>Markup: <%=@markup1%></p>
+  <%@markup = album.price - album.cost%>
+  <p><%=@markup%></p>
   <p> <a href = "/albums/<%= album.id%>">Show Album<a/> </p>
   <p> <a href = "/artists/<%= album.artist_id%>">Show artist<a/></p>
+  <form method = "post" action = "/albums/<%= album.id %>/buy">
+    <input type = "submit"
+    value = "Buy Album"
+  />
+  </form>
+  <form method = "post" action = "/albums/<%= album.id %>/sell">
+    <input type = "submit"
+    value = "Sell Album"
+  />
+  </form>
 
   <%end%>
