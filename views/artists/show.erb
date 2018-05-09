@@ -1,3 +1,9 @@
 <p>Artist</p>
 
 <p>Artist: <%=@artist.name%></p>
+
+<% @albums.each do |album| %>
+
+<p>Title: <%=album.title%></P>
+
+<%end%>

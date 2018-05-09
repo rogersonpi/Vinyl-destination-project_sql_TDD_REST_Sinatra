@@ -29,13 +29,13 @@ class Artist
   SET
 
       name = $1
-    
+
     WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run( sql, values )
   end
 
-  def get_albums()
+  def get_albums
     sql = "SELECT * FROM albums WHERE albums.artist_id = $1"
     values = [@id]
     results = SqlRunner.run(sql, values)
@@ -43,7 +43,7 @@ class Artist
 
   end
   #class
-  def self.find_artist(id)
+  def self.find(id)
     sql = "SElECT * FROM artists WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql, values).first()

@@ -29,10 +29,10 @@ class Album
     @id = results.first()['id'].to_i
   end
 
-  def markup()
-    markup = @price - @Cost
-
-  end
+  # def markup()
+  #   markup = @price - @Cost
+  #
+  # end
 
    def update()
    sql = "UPDATE albums

@@ -3,14 +3,17 @@ require( 'sinatra/contrib/all' )
 #require("pry")
 require_relative( '../models/album.rb' )
 require_relative('../models/artist.rb')
+require('pry-byebug')
 
 get '/artists' do #index
   @artist = Artist.all()
   erb(:"artists/index")
 end
 
-get '/artists/:id' do #show
-  @artist = Artist.find_artist(params[:id])
+get '/artists/:id' do
+  #binding.pry
+  @artist = Artist.find(params[:id])
+  @albums = @artist.get_albums()
   erb(:"artists/show")
 end
 
@@ -33,11 +36,7 @@ get '/artists/:id/edit' do
   erb( :"artists/edit" )
 end
 #
-get '/artist/:id' do
-  @albums = Albums.all()#show
-  @artist = Artist.find_album(params[:id])
-  erb(:"artists/show")
-end
+
 
 post '/artist/:id/edit' do
   Artist.new(params).update
