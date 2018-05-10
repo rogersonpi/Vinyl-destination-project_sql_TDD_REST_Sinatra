@@ -1,15 +1,5 @@
-<form action = "/albums/<%=@album.id%>/buy" method="post">
-  <label for="quantity">Quantity:</label>
-  <input
-  type="number"
-  name="quantity"
-  id="title-field"
-  />
-<button type="submit"></button>
-
-
-</form>
-<h1>Victims</h1>
+<h1>VINYL DESTINATION</h1>
+<h2>Albums</h2>
 
 <table>
   <tr>
@@ -23,12 +13,22 @@
     <th></th>
     <th>Quantity</th>
     <th></th>
+    <th>Markup</th>
+    <th>Buy Album</th>
+    <th>Sell Album</th>
+    <th>Go to Artist</th>
+    <th>Go to Album</th>
   </tr>
   <% for album in @albums %>
+  <%@markup = album.price - album.cost%>
   <tr>
-    <td><a href="/victims/<%= victim.id %>"><%= victim.name %></a></td>
-    <td>|</td>
-    <td><%= victim.run_speed %></td>
+    <td> <%=album.title%></td>
+    <td><%=album.genre%></td>
+    <td><%=ablum.cost%></td>
+    <td><%=album.price%></td>
+    <td><%=album.quantity%></td>
+
+
   </tr>
   <% end %>
 </table>

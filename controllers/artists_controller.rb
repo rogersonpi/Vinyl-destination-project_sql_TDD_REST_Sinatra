@@ -10,6 +10,10 @@ get '/artists' do #index
   erb(:"artists/index")
 end
 
+get '/artists/new' do #new
+  erb( :"artists/new" )
+end
+
 get '/artists/:id' do
   #binding.pry
   @artist = Artist.find(params[:id])
@@ -17,22 +21,16 @@ get '/artists/:id' do
   erb(:"artists/show")
 end
 
-
-get '/artists/new' do #new
-  @artists = Artist.all()
-  erb( :"artists/new" )
-end
-
 post '/artists' do #create
  @newalbum = Artist.new(params)
  @newalbum.save()
- redirect to ("/albums")
+ redirect to ("/albums/new")
 end
 
 get '/artists/:id/edit' do
   # edit
   @artists = Artist.all()
-  @artist = Artist.find_artist(params[:id])
+  @artist = Artist.find(params[:id])
   erb( :"artists/edit" )
 end
 #

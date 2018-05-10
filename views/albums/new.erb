@@ -1,11 +1,21 @@
+<p>Please Enter Album Details</p>
+
 <form method="post" action = "/albums">
+
+  <label>
+    Select an artist:
+    <select name="artist_id">
+      <% for artist in @artists %>
+      <option value="<%= artist.id %>"><%= artist.name %></option>
+      <% end %>
+    </select>
+  </label>
 
   <label for="title">title:</label>
   <input
   type="text"
   name="title"
   id="last-name-field"
-  
   />
 
   <label for="genre">Genre:</label>
@@ -16,14 +26,14 @@
   />
   <label for="price">Price:</label>
   <input
-  type="text"
-  name="genre"
+  type="number"
+  name="price"
   id="genre-field"
   />
   <label for="cost">Cost:</label>
   <input
-  type="text"
-  name="genre"
+  type="number"
+  name="cost"
   id="genre-field"
   />
 
@@ -34,14 +44,6 @@
   id="quantity-field"
   />
 
-  <label>
-    Select an artist:
-    <select name="artist_id">
-      <% for artist in @artists %>
-      <option value="<%= artist.id %>"><%= artist.name %></option>
-      <% end %>
-    </select>
-  </label>
   <button type="submit">New Album</button>
 
 
